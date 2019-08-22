@@ -1,0 +1,40 @@
+.Layout {
+  position: relative;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.Header {
+  padding: 0px 15px;
+  background: #a52a2a;
+
+  &--navigation {
+    max-width: 1020px;
+    margin: 0 auto;
+
+    &-item {
+      display: inline-block;
+      color: #fff;
+      font-size: 20px;
+      line-height: 20px;
+      padding: 10px 15px;
+      transition: all 0.3s;
+
+      &:hover,
+      &.active {
+        opacity: 0.6;
+        background: #fff;
+        color: #a52a2a;
+      }
+    }
+  }
+}
+
+.Footer {
+  padding: 20px 15px;
+  font-size: 20px;
+  line-height: 20px;
+  text-align: center;
+}
