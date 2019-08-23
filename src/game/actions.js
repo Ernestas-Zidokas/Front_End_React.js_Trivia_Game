@@ -3,22 +3,22 @@ import { MODULE_NAME } from './constants';
 import { API } from '../constants';
 import * as selectors from './selectors';
 
-export const getQuestions = () => async dispatch => {
-  dispatch({ type: actionTypes.GET_QUESTIONS });
-
+export const getQuestion = cat => async dispatch => {
+  dispatch({ type: actionTypes.GET_QUESTION });
+  // https://opentdb.com/api.php?amount=10&category=23
   try {
-    const result = await fetch('https://opentdb.com/api.php?amount=10');
+    const result = await fetch(`${API.getQuestion}amount=1&category=${cat}`);
     const json = await result.json();
 
     if (!json.response_code) {
       dispatch({
-        type: actionTypes.GET_QUESTIONS_SUCCESS,
+        type: actionTypes.GET_QUESTION_SUCCESS,
         payload: json.results,
       });
     }
   } catch (error) {
     dispatch({
-      type: actionTypes.GET_QUESTIONS_FAILURE,
+      type: actionTypes.GET_QUESTION_FAILURE,
       payload: 'Something went wrong!',
     });
   }
