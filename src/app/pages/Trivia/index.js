@@ -3,17 +3,34 @@ import game from '../../../game';
 import { connect } from 'react-redux';
 import { compose, bindActionCreators } from 'redux';
 import { Modal } from './components';
+import { shuffleArray } from '../../../utils';
+import { Button } from '../../components';
 import './index.scss';
 
-function Trivia({ questions }) {
+function Trivia({ question }) {
+  const onClick = e => {
+    console.log(e.target.value);
+  };
   return (
     <div className="Trivia">
       <Modal />
-      {questions.length > 0 && (
+      {question.length > 0 && (
         <div className="Questions">
-          {questions.map(({ question }, i) => (
-            <p key={i}>{question}</p>
-          ))}
+          {question.map(({ question, correct_answer, incorrect_answers }, i) => {
+            const answersArray = shuffleArray([...incorrect_answers, correct_answer]);
+            return (
+              <div key={i}>
+                <p>{question}</p>
+                <div>
+                  {answersArray.map((answer, i) => (
+                    <Button onClick={onClick} key={i} value={answer}>
+                      {answer}
+                    </Button>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
         </div>
       )}
     </div>
@@ -23,7 +40,7 @@ function Trivia({ questions }) {
 const enhance = compose(
   connect(
     state => ({
-      questions: game.selectors.getQuestions(state),
+      question: game.selectors.getQuestion(state),
     }),
     dispatch => bindActionCreators({}, dispatch),
   ),

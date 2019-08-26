@@ -5,7 +5,7 @@ import * as selectors from './selectors';
 
 export const getQuestion = cat => async dispatch => {
   dispatch({ type: actionTypes.GET_QUESTION });
-  // https://opentdb.com/api.php?amount=10&category=23
+  // https://opentdb.com/api.php?amount=10&category=23&difficulty=easy&type=boolean
   try {
     const result = await fetch(`${API.getQuestion}amount=1&category=${cat}`);
     const json = await result.json();
@@ -45,4 +45,24 @@ export const getCategories = () => async dispatch => {
 export const setCategory = payload => ({
   type: actionTypes.SET_CATEGORY,
   payload,
+});
+
+export const toggleModal = () => ({
+  type: actionTypes.TOGGLE_MODAL,
+});
+
+export const submitAnswer = () => ({
+  type: actionTypes.SUBMIT_ANSWER,
+});
+
+export const setQuestionNr = () => ({
+  type: actionTypes.SET_QUESTION_NR,
+});
+
+export const answerIsCorrect = () => ({
+  type: actionTypes.ANSWER_IS_CORRECT,
+});
+
+export const answerIsInCorrect = () => ({
+  type: actionTypes.ANSWER_IS_INCORRECT,
 });

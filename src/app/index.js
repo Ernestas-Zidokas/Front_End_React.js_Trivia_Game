@@ -12,7 +12,7 @@ ReactModal.setAppElement('#root');
 function App() {
   useEffect(() => {
     store.dispatch(game.actions.getCategories());
-  }, []);
+  });
 
   return (
     <Provider store={store}>

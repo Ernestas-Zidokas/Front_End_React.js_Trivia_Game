@@ -1,16 +1,24 @@
 import { MODULE_NAME } from './constants';
 import { randomNumber } from '../utils';
 
-export const getQuestions = state => {
-  return state[MODULE_NAME].questions.data;
+export const getQuestion = state => {
+  return state[MODULE_NAME].question.data;
 };
 
 export const getCategories = state => {
   return state[MODULE_NAME].categories.data;
 };
 
+export const getCorrectAnswer = state => {
+  return state[MODULE_NAME].question.data.correct_answer;
+};
+
 export const getSelectedCategory = state => {
   return state[MODULE_NAME].categories.selectedCategory;
+};
+
+export const getToggleModal = state => {
+  return state[MODULE_NAME].categories.toggleModal;
 };
 
 export const get4RandCategories = state => {
