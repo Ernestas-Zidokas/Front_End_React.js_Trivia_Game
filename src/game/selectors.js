@@ -10,7 +10,7 @@ export const getCategories = state => {
 };
 
 export const getCorrectAnswer = state => {
-  return state[MODULE_NAME].question.data.correct_answer;
+  return state[MODULE_NAME].question.data[0].correct_answer;
 };
 
 export const getSelectedCategory = state => {
@@ -19,6 +19,26 @@ export const getSelectedCategory = state => {
 
 export const getToggleModal = state => {
   return state[MODULE_NAME].categories.toggleModal;
+};
+
+export const getLifeCount = state => {
+  return state[MODULE_NAME].play.life;
+};
+
+export const getIsGameOver = state => {
+  return state[MODULE_NAME].play.gameOver;
+};
+
+export const getQuestionNr = state => {
+  return state[MODULE_NAME].play.questionNr;
+};
+
+export const getDifficulty = state => {
+  return state[MODULE_NAME].play.difficulty;
+};
+
+export const getWrongAnswers = state => {
+  return state[MODULE_NAME].play.wrongAnswers;
 };
 
 export const get4RandCategories = state => {

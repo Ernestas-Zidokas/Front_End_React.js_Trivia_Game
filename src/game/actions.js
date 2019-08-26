@@ -2,12 +2,15 @@ import * as actionTypes from './actionTypes';
 import { MODULE_NAME } from './constants';
 import { API } from '../constants';
 import * as selectors from './selectors';
+import querySring from 'query-string';
 
-export const getQuestion = cat => async dispatch => {
+export const getQuestion = category => async (dispatch, getState) => {
+  const difficulty = selectors.getDifficulty(getState());
+  const queryData = { amount: 1, category, difficulty };
+
   dispatch({ type: actionTypes.GET_QUESTION });
-  // https://opentdb.com/api.php?amount=10&category=23&difficulty=easy&type=boolean
   try {
-    const result = await fetch(`${API.getQuestion}amount=1&category=${cat}`);
+    const result = await fetch(`${API.getQuestion}?${querySring.stringify(queryData)}`);
     const json = await result.json();
 
     if (!json.response_code) {
@@ -51,8 +54,9 @@ export const toggleModal = () => ({
   type: actionTypes.TOGGLE_MODAL,
 });
 
-export const submitAnswer = () => ({
+export const submitAnswer = payload => ({
   type: actionTypes.SUBMIT_ANSWER,
+  payload,
 });
 
 export const setQuestionNr = () => ({
@@ -63,6 +67,16 @@ export const answerIsCorrect = () => ({
   type: actionTypes.ANSWER_IS_CORRECT,
 });
 
-export const answerIsInCorrect = () => ({
+export const answerIsInCorrect = payload => ({
   type: actionTypes.ANSWER_IS_INCORRECT,
+  payload,
+});
+
+export const setGameOver = () => ({
+  type: actionTypes.GAME_OVER,
+});
+
+export const setDifficulty = payload => ({
+  type: actionTypes.SET_DIFFICULTY,
+  payload,
 });

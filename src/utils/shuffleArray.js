@@ -1,18 +1,28 @@
-function shuffleArray(array) {
-  let currentIndex = array.length,
-    temporaryValue,
-    randomIndex;
+let memoizedValue = null;
 
-  while (0 !== currentIndex) {
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex -= 1;
+function shuffleArray(array, memoized) {
+  if (!memoizedValue || memoized) {
+    let currentIndex = array.length,
+      temporaryValue,
+      randomIndex;
 
-    temporaryValue = array[currentIndex];
-    array[currentIndex] = array[randomIndex];
-    array[randomIndex] = temporaryValue;
+    while (0 !== currentIndex) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+
+    if (memoized) {
+      memoizedValue = array;
+    }
+
+    return array;
   }
 
-  return array;
+  return memoizedValue;
 }
 
 export default shuffleArray;

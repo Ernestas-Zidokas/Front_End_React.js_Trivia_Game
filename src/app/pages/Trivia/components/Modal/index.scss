@@ -1,5 +1,8 @@
 .ReactModal {
   &__Overlay {
+    width: 1020px;
+    max-height: 300px;
+    margin: 0 auto;
     position: absolute;
     top: 40px;
     left: 40px;
@@ -9,7 +12,30 @@
     background: rgb(255, 255, 255);
     overflow: auto;
     border-radius: 4px;
-    outline: none;
     padding: 20px;
+    text-align: center;
+  }
+
+  &__Content {
+    &--Categories {
+      margin: 20px;
+
+      button {
+        max-width: 45%;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 20px;
+        font-size: 18px;
+        margin: 10px;
+      }
+    }
+
+    label {
+      font-size: 24px;
+    }
+
+    &:focus {
+      outline: none;
+    }
   }
 }

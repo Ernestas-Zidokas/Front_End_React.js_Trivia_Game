@@ -5,6 +5,7 @@ import { Trivia } from './pages';
 import store from './state';
 import game from '../game';
 import ReactModal from 'react-modal';
+import { TimerProvider } from './components';
 import './index.scss';
 
 ReactModal.setAppElement('#root');
@@ -15,11 +16,13 @@ function App() {
   });
 
   return (
-    <Provider store={store}>
-      <Layout>
-        <Trivia />
-      </Layout>
-    </Provider>
+    <TimerProvider>
+      <Provider store={store}>
+        <Layout>
+          <Trivia />
+        </Layout>
+      </Provider>
+    </TimerProvider>
   );
 }
 
