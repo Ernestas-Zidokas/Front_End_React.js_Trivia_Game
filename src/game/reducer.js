@@ -95,6 +95,15 @@ function reducer(state = INITIAL_STATE, { type, payload }) {
         },
       };
 
+    case actionTypes.TIME_IS_OUT:
+      return {
+        ...state,
+        play: {
+          ...state.play,
+          life: state.play.life - 1,
+        },
+      };
+
     case actionTypes.GAME_OVER:
       return {
         ...state,

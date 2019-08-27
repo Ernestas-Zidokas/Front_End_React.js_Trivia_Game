@@ -72,6 +72,10 @@ export const answerIsInCorrect = payload => ({
   payload,
 });
 
+export const timeIsOut = () => ({
+  type: actionTypes.TIME_IS_OUT,
+});
+
 export const setGameOver = () => ({
   type: actionTypes.GAME_OVER,
 });

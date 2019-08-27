@@ -1,19 +1,20 @@
 import React, { useContext } from 'react';
 import ReactModal from 'react-modal';
-import { Button } from '../../../../components';
+import { Button, Loader } from '../../../../components';
 import game from '../../../../../game';
 import { connect } from 'react-redux';
 import { compose, bindActionCreators } from 'redux';
 import TimerContext from '../../../../components/TimerContext';
 import './index.scss';
 
-function Modal({ categories, setCategory, rand4Categories, toggleModal, setToggleModal }) {
-  const { setStartTime } = useContext(TimerContext);
+function Modal({ categories, setCategory, rand4Categories, toggleModal, setToggleModal, loading }) {
+  const { setStartTime, setCurrentTime } = useContext(TimerContext);
 
   const handleChange = e => {
     setCategory(e.target.value);
     setToggleModal();
     setStartTime(Date.now());
+    setCurrentTime(30);
   };
 
   return (
@@ -23,6 +24,7 @@ function Modal({ categories, setCategory, rand4Categories, toggleModal, setToggl
       isOpen={toggleModal}
     >
       <label>Choose a category: </label>
+      {loading && <Loader></Loader>}
       {categories.length > 0 && (
         <div className="ReactModal__Content--Categories">
           {rand4Categories.map(({ name, id }) => (
@@ -42,6 +44,7 @@ const enhance = compose(
       categories: game.selectors.getCategories(state),
       rand4Categories: game.selectors.get4RandCategories(state),
       toggleModal: game.selectors.getToggleModal(state),
+      loading: game.selectors.getCategoryLoading(state),
     }),
     dispatch =>
       bindActionCreators(

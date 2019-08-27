@@ -4,7 +4,7 @@ const TimerContext = React.createContext({});
 
 function TimerProvider({ children }) {
   const [startTime, setStartTime] = useState(0);
-  const [currentTime, setCurrentTime] = useState(null);
+  const [currentTime, setCurrentTime] = useState(30);
 
   return (
     <TimerContext.Provider

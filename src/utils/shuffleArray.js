@@ -1,6 +1,10 @@
 let memoizedValue = null;
 
 function shuffleArray(array, memoized) {
+  if (memoizedValue && memoizedValue.includes(array[0])) {
+    return memoizedValue;
+  }
+
   if (!memoizedValue || memoized) {
     let currentIndex = array.length,
       temporaryValue,

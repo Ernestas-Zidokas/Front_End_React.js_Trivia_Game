@@ -5,8 +5,16 @@ export const getQuestion = state => {
   return state[MODULE_NAME].question.data;
 };
 
+export const getQuestionLoading = state => {
+  return state[MODULE_NAME].question.loading;
+};
+
 export const getCategories = state => {
   return state[MODULE_NAME].categories.data;
+};
+
+export const getCategoryLoading = state => {
+  return state[MODULE_NAME].categories.loading;
 };
 
 export const getCorrectAnswer = state => {
@@ -39,6 +47,10 @@ export const getDifficulty = state => {
 
 export const getWrongAnswers = state => {
   return state[MODULE_NAME].play.wrongAnswers;
+};
+
+export const getQuestionsAnswered = state => {
+  return state[MODULE_NAME].play.questionsAnswered;
 };
 
 export const get4RandCategories = state => {

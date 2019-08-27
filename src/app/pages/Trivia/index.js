@@ -2,9 +2,9 @@ import React from 'react';
 import game from '../../../game';
 import { connect } from 'react-redux';
 import { compose, bindActionCreators } from 'redux';
-import { Modal } from './components';
+import { Modal, GameOver } from './components';
 import { shuffleArray } from '../../../utils';
-import { Button, Timer } from '../../components';
+import { Button, Timer, Loader } from '../../components';
 import Entities from 'html-entities';
 import styled from 'styled-components';
 import './index.scss';
@@ -17,7 +17,17 @@ const StyleButton = styled(Button)`
   }};
 `;
 
-function Trivia({ question, submitAnswer, gameOver, questionNr, wrongAnswers }) {
+function Trivia({
+  question,
+  submitAnswer,
+  gameOver,
+  questionNr,
+  wrongAnswers,
+  life,
+  questionsAnswered,
+  loading,
+  toggleModal,
+}) {
   let HtmlEntities = Entities.AllHtmlEntities;
   const entities = new HtmlEntities();
 
@@ -27,8 +37,10 @@ function Trivia({ question, submitAnswer, gameOver, questionNr, wrongAnswers }) 
 
   return (
     <div className="Trivia">
+      <p className="Trivia--life">Life: {life}</p>
+      {loading && <Loader></Loader>}
       <Modal />
-      {gameOver && <p>Game Over!</p>}
+      {gameOver && <GameOver questionsAnswered={questionsAnswered}></GameOver>}
       {!gameOver && (
         <React.Fragment>
           {question.length > 0 && (
@@ -50,7 +62,7 @@ function Trivia({ question, submitAnswer, gameOver, questionNr, wrongAnswers }) 
                           key={i}
                           value={answer}
                         >
-                          {answer}
+                          {entities.decode(answer)}
                         </StyleButton>
                       ))}
                     </div>
@@ -72,6 +84,10 @@ const enhance = compose(
       gameOver: game.selectors.getIsGameOver(state),
       questionNr: game.selectors.getQuestionNr(state),
       wrongAnswers: game.selectors.getWrongAnswers(state),
+      life: game.selectors.getLifeCount(state),
+      questionsAnswered: game.selectors.getQuestionsAnswered(state),
+      loading: game.selectors.getQuestionLoading(state),
+      toggleModal: game.selectors.getToggleModal(state),
     }),
     dispatch =>
       bindActionCreators(
