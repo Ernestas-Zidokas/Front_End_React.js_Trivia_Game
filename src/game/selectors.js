@@ -70,12 +70,7 @@ export const get4RandCategories = state => {
 
 function randCategory(result, categories) {
   let randCat = categories[randomNumber(24)];
-
   const catExists = result.find(cat => (cat ? cat.id === randCat.id : false));
 
-  if (catExists) {
-    return randCategory(result, categories);
-  } else {
-    return randCat;
-  }
+  return catExists ? randCategory(result, categories) : randCat;
 }

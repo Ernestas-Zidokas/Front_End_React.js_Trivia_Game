@@ -5,7 +5,7 @@ function ModalTitle() {
   return (
     <div className="ReactModal__Content--Categories__title">
       <label>You Must Choose... </label>
-      <img src={youMustChoose} alt={'A doll in a mask'} />
+      <img src={youMustChoose} alt="A doll in a mask" />
     </div>
   );
 }

@@ -1,8 +1,10 @@
-function randomNumber(endNr, startNr) {
-  if (startNr) {
-    return Math.floor(Math.random() * endNr) + startNr;
+function randomNumber(end, start) {
+  const { floor, random } = Math;
+
+  if (start) {
+    return floor(random() * end) + start;
   }
-  return Math.floor(Math.random() * endNr);
+  return floor(random() * end);
 }
 
 export default randomNumber;

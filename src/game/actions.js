@@ -18,6 +18,8 @@ export const getQuestion = category => async (dispatch, getState) => {
         payload: json.results,
       });
     }
+
+    //handle unhappy path with switch
   } catch (error) {
     dispatch({
       type: actionTypes.GET_QUESTION_FAILURE,

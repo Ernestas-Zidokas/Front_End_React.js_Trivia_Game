@@ -24,7 +24,7 @@ function Categories({ categories, setCategory, setToggleModal }) {
     </div>
   );
 }
-
+//doest need compose
 const enhance = compose(
   connect(
     state => ({

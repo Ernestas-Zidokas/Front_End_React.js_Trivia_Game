@@ -11,7 +11,7 @@ function Play({ setToggleInGame }) {
     <div className="ReactModal__Content--Play">
       <p>Do You Want To Play A Game?</p>
       <Button onClick={handlePlay}>Play</Button>
-      <img src={letsPlay} alt={'A doll with a mask in a TV'} />
+      <img src={letsPlay} alt="A doll with a mask in a TV" />
     </div>
   );
 }
