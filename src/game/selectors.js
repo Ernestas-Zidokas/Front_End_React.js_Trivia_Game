@@ -37,6 +37,10 @@ export const getIsGameOver = state => {
   return state[MODULE_NAME].play.gameOver;
 };
 
+export const getToggleInGame = state => {
+  return state[MODULE_NAME].play.toggleInGame;
+};
+
 export const getQuestionNr = state => {
   return state[MODULE_NAME].play.questionNr;
 };

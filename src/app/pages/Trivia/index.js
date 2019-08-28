@@ -1,102 +1,40 @@
 import React from 'react';
 import game from '../../../game';
 import { connect } from 'react-redux';
-import { compose, bindActionCreators } from 'redux';
-import { Modal, GameOver } from './components';
-import { shuffleArray } from '../../../utils';
-import { Button, Timer, Loader } from '../../components';
-import Entities from 'html-entities';
-import styled from 'styled-components';
+import { Modal, GameOver, Life, Question } from './components';
+import { Timer, Loader } from '../../components';
+import makeYourChoice from '../../static/gifs/makeYourChoice.gif';
 import './index.scss';
 
-const StyleButton = styled(Button)`
-  background: ${({ wrongAnswers, value }) => {
-    if (wrongAnswers.includes(value)) {
-      return 'red';
-    }
-  }};
-`;
-
-function Trivia({
-  question,
-  submitAnswer,
-  gameOver,
-  questionNr,
-  wrongAnswers,
-  life,
-  questionsAnswered,
-  loading,
-  toggleModal,
-}) {
-  let HtmlEntities = Entities.AllHtmlEntities;
-  const entities = new HtmlEntities();
-
-  const onClick = e => {
-    submitAnswer(e.target.value);
-  };
+function Trivia({ question, gameOver, questionNr, life, questionsAnswered, loading, toggleModal }) {
+  const showQuestion = !gameOver && question.length > 0 && !toggleModal;
 
   return (
     <div className="Trivia">
-      <p className="Trivia--life">Life: {life}</p>
-      {loading && <Loader></Loader>}
+      <Life life={life} />
+      {loading && <Loader />}
       <Modal />
-      {gameOver && <GameOver questionsAnswered={questionsAnswered}></GameOver>}
-      {!gameOver && (
-        <React.Fragment>
-          {question.length > 0 && (
-            <div className="Trivia--container">
-              <Timer></Timer>
-              <p className="Trivia--number">Question Nr. {questionNr}</p>
-              {question.map(({ question, correct_answer, incorrect_answers }, i) => {
-                const answersArray = shuffleArray([...incorrect_answers, correct_answer], true);
-
-                return (
-                  <div key={i}>
-                    <p className="Trivia--question">{entities.decode(question)}</p>
-                    <div>
-                      {answersArray.map((answer, i) => (
-                        <StyleButton
-                          wrongAnswers={wrongAnswers}
-                          className="Trivia--answer"
-                          onClick={onClick}
-                          key={i}
-                          value={answer}
-                        >
-                          {entities.decode(answer)}
-                        </StyleButton>
-                      ))}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          )}
-        </React.Fragment>
+      {gameOver && <GameOver questionsAnswered={questionsAnswered} />}
+      {showQuestion && (
+        <div className="Trivia--Container">
+          <img src={makeYourChoice} alt="A doll with a mask in a TV" />
+          <p className="Trivia--Container--number">Question Nr. {questionNr}</p>
+          <Timer />
+          <Question />
+        </div>
       )}
     </div>
   );
 }
 
-const enhance = compose(
-  connect(
-    state => ({
-      question: game.selectors.getQuestion(state),
-      gameOver: game.selectors.getIsGameOver(state),
-      questionNr: game.selectors.getQuestionNr(state),
-      wrongAnswers: game.selectors.getWrongAnswers(state),
-      life: game.selectors.getLifeCount(state),
-      questionsAnswered: game.selectors.getQuestionsAnswered(state),
-      loading: game.selectors.getQuestionLoading(state),
-      toggleModal: game.selectors.getToggleModal(state),
-    }),
-    dispatch =>
-      bindActionCreators(
-        {
-          submitAnswer: game.actions.submitAnswer,
-        },
-        dispatch,
-      ),
-  ),
-);
+const enhance = connect(state => ({
+  question: game.selectors.getQuestion(state),
+  gameOver: game.selectors.getIsGameOver(state),
+  questionNr: game.selectors.getQuestionNr(state),
+  life: game.selectors.getLifeCount(state),
+  questionsAnswered: game.selectors.getQuestionsAnswered(state),
+  loading: game.selectors.getQuestionLoading(state),
+  toggleModal: game.selectors.getToggleModal(state),
+}));
 
 export default enhance(Trivia);

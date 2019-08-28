@@ -1,37 +1,26 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import ReactModal from 'react-modal';
-import { Button, Loader } from '../../../../components';
+import { Loader } from '../../../../components';
 import game from '../../../../../game';
 import { connect } from 'react-redux';
 import { compose, bindActionCreators } from 'redux';
-import TimerContext from '../../../../components/TimerContext';
+import { Play, Life, ModalTitle, Categories } from '../../components';
 import './index.scss';
 
-function Modal({ categories, setCategory, rand4Categories, toggleModal, setToggleModal, loading }) {
-  const { setStartTime, setCurrentTime } = useContext(TimerContext);
-
-  const handleChange = e => {
-    setCategory(e.target.value);
-    setToggleModal();
-    setStartTime(Date.now());
-    setCurrentTime(30);
-  };
-
+function Modal({ categories, toggleModal, loading, toggleInGame, setToggleInGame, life }) {
   return (
     <ReactModal
       className="ReactModal__Content"
       overlayClassName="ReactModal__Overlay"
       isOpen={toggleModal}
     >
-      <label>Choose a category: </label>
-      {loading && <Loader></Loader>}
-      {categories.length > 0 && (
+      {!toggleInGame && <Play setToggleInGame={setToggleInGame} />}
+      {toggleInGame && (
         <div className="ReactModal__Content--Categories">
-          {rand4Categories.map(({ name, id }) => (
-            <Button onClick={handleChange} key={id} value={id}>
-              {name}
-            </Button>
-          ))}
+          <Life life={life} />
+          <ModalTitle />
+          {loading && <Loader />}
+          {categories.length > 0 && <Categories />}
         </div>
       )}
     </ReactModal>
@@ -42,15 +31,15 @@ const enhance = compose(
   connect(
     state => ({
       categories: game.selectors.getCategories(state),
-      rand4Categories: game.selectors.get4RandCategories(state),
       toggleModal: game.selectors.getToggleModal(state),
       loading: game.selectors.getCategoryLoading(state),
+      toggleInGame: game.selectors.getToggleInGame(state),
+      life: game.selectors.getLifeCount(state),
     }),
     dispatch =>
       bindActionCreators(
         {
-          setCategory: game.actions.setCategory,
-          setToggleModal: game.actions.toggleModal,
+          setToggleInGame: game.actions.toggleInGame,
         },
         dispatch,
       ),

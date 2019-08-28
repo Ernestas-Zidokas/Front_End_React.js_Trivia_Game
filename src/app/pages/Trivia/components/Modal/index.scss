@@ -1,7 +1,7 @@
 .ReactModal {
   &__Overlay {
     width: 1020px;
-    max-height: 300px;
+    max-height: 350px;
     margin: 0 auto;
     position: absolute;
     top: 40px;
@@ -9,10 +9,9 @@
     right: 40px;
     bottom: 40px;
     border: 1px solid rgb(204, 204, 204);
-    background: rgb(255, 255, 255);
+    background: #000;
     overflow: auto;
     border-radius: 4px;
-    padding: 20px;
     text-align: center;
   }
 
@@ -20,7 +19,28 @@
     &--Categories {
       margin: 20px;
 
+      &__title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        label,
+        img {
+          margin: 10px;
+        }
+
+        img {
+          height: 50px;
+        }
+
+        label {
+          color: #fff;
+          font-size: 24px;
+        }
+      }
+
       button {
+        cursor: pointer;
         max-width: 45%;
         width: 100%;
         box-sizing: border-box;
@@ -30,8 +50,27 @@
       }
     }
 
-    label {
-      font-size: 24px;
+    &--Play {
+      p {
+        color: #fff;
+        font-size: 24px;
+        font-weight: 700;
+        margin: 10px;
+      }
+
+      button {
+        cursor: pointer;
+        margin: 10px;
+        padding: 10px 20px;
+        font-size: 18px;
+        font-weight: 700;
+      }
+
+      img {
+        height: 170px;
+        display: block;
+        margin: 10px auto;
+      }
     }
 
     &:focus {

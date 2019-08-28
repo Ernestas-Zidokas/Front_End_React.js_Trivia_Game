@@ -1,7 +1,7 @@
 let memoizedValue = null;
 
 function shuffleArray(array, memoized) {
-  if (memoizedValue && memoizedValue.includes(array[0])) {
+  if (memoizedValue && memoizedValue.every(value => array.includes(value))) {
     return memoizedValue;
   }
 

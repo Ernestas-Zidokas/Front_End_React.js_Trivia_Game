@@ -19,7 +19,9 @@ function Timer({ timeIsOut, gameOver, toggleModal }) {
 
   if (currentTime === 0 && !gameOver) {
     timeIsOut();
-    // setStartTime(Date.now());
+
+    setStartTime(Date.now());
+    setCurrentTime(30);
   }
 
   const { min, sec } = timeConverter(currentTime);

@@ -1,12 +1,11 @@
 import * as actionTypes from './actionTypes';
-import { MODULE_NAME } from './constants';
 import { API } from '../constants';
 import * as selectors from './selectors';
 import querySring from 'query-string';
 
 export const getQuestion = category => async (dispatch, getState) => {
   const difficulty = selectors.getDifficulty(getState());
-  const queryData = { amount: 1, category, difficulty };
+  const queryData = { amount: 1, category, difficulty, type: 'multiple' };
 
   dispatch({ type: actionTypes.GET_QUESTION });
   try {
@@ -83,4 +82,12 @@ export const setGameOver = () => ({
 export const setDifficulty = payload => ({
   type: actionTypes.SET_DIFFICULTY,
   payload,
+});
+
+export const toggleInGame = () => ({
+  type: actionTypes.TOGGLE_IN_GAME,
+});
+
+export const playAgain = () => ({
+  type: actionTypes.PLAY_AGAIN,
 });

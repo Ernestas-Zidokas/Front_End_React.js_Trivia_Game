@@ -9,10 +9,11 @@ const INITIAL_QUESTION_STATE = {
 const INITIAL_PLAY_STATE = {
   life: 3,
   questionsAnswered: 0,
-  questionNr: 0, //to determine difficulty level
+  questionNr: 0,
   gameOver: false,
   difficulty: 'easy',
   wrongAnswers: [],
+  toggleInGame: false,
 };
 
 const INITIAL_CATEGORY_STATE = {
@@ -121,6 +122,28 @@ function reducer(state = INITIAL_STATE, { type, payload }) {
           difficulty: payload,
         },
       };
+
+    case actionTypes.TOGGLE_IN_GAME:
+      return {
+        ...state,
+        play: {
+          ...state.play,
+          toggleInGame: !state.play.toggleInGame,
+        },
+      };
+
+    case actionTypes.PLAY_AGAIN:
+      return {
+        ...state,
+        play: {
+          ...INITIAL_PLAY_STATE,
+        },
+        categories: {
+          ...state.categories,
+          toggleModal: true,
+        },
+      };
+
     default:
       return state;
   }
