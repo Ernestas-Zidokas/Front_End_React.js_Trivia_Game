@@ -3,7 +3,7 @@ import ReactModal from 'react-modal';
 import { Loader } from '../../../../components';
 import game from '../../../../../game';
 import { connect } from 'react-redux';
-import { compose, bindActionCreators } from 'redux';
+import { bindActionCreators } from 'redux';
 import { Play, Life, ModalTitle, Categories } from '../../components';
 import './index.scss';
 
@@ -27,23 +27,21 @@ function Modal({ categories, toggleModal, loading, toggleInGame, setToggleInGame
   );
 }
 
-const enhance = compose(
-  connect(
-    state => ({
-      categories: game.selectors.getCategories(state),
-      toggleModal: game.selectors.getToggleModal(state),
-      loading: game.selectors.getCategoryLoading(state),
-      toggleInGame: game.selectors.getToggleInGame(state),
-      life: game.selectors.getLifeCount(state),
-    }),
-    dispatch =>
-      bindActionCreators(
-        {
-          setToggleInGame: game.actions.toggleInGame,
-        },
-        dispatch,
-      ),
-  ),
+const enhance = connect(
+  state => ({
+    categories: game.selectors.getCategories(state),
+    toggleModal: game.selectors.getToggleModal(state),
+    loading: game.selectors.getCategoryLoading(state),
+    toggleInGame: game.selectors.getToggleInGame(state),
+    life: game.selectors.getLifeCount(state),
+  }),
+  dispatch =>
+    bindActionCreators(
+      {
+        setToggleInGame: game.actions.toggleInGame,
+      },
+      dispatch,
+    ),
 );
 
 export default enhance(Modal);

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { compose, bindActionCreators } from 'redux';
+import { bindActionCreators } from 'redux';
 import { AllHtmlEntities } from 'html-entities';
 import styled from 'styled-components';
 import { shuffleArray } from '../../../../utils';
@@ -50,20 +50,18 @@ function Question({ question, wrongAnswers, submitAnswer }) {
   );
 }
 
-const enhance = compose(
-  connect(
-    state => ({
-      question: game.selectors.getQuestion(state),
-      wrongAnswers: game.selectors.getWrongAnswers(state),
-    }),
-    dispatch =>
-      bindActionCreators(
-        {
-          submitAnswer: game.actions.submitAnswer,
-        },
-        dispatch,
-      ),
-  ),
+const enhance = connect(
+  state => ({
+    question: game.selectors.getQuestion(state),
+    wrongAnswers: game.selectors.getWrongAnswers(state),
+  }),
+  dispatch =>
+    bindActionCreators(
+      {
+        submitAnswer: game.actions.submitAnswer,
+      },
+      dispatch,
+    ),
 );
 
 export default enhance(Question);

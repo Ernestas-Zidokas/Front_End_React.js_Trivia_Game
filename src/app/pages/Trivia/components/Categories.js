@@ -24,21 +24,18 @@ function Categories({ categories, setCategory, setToggleModal }) {
     </div>
   );
 }
-//doest need compose
-const enhance = compose(
-  connect(
-    state => ({
-      categories: game.selectors.get4RandCategories(state),
-    }),
-    dispatch =>
-      bindActionCreators(
-        {
-          setCategory: game.actions.setCategory,
-          setToggleModal: game.actions.toggleModal,
-        },
-        dispatch,
-      ),
-  ),
+const enhance = connect(
+  state => ({
+    categories: game.selectors.get4RandCategories(state),
+  }),
+  dispatch =>
+    bindActionCreators(
+      {
+        setCategory: game.actions.setCategory,
+        setToggleModal: game.actions.toggleModal,
+      },
+      dispatch,
+    ),
 );
 
 export default enhance(Categories);

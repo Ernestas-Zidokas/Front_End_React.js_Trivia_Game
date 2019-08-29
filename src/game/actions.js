@@ -11,15 +11,20 @@ export const getQuestion = category => async (dispatch, getState) => {
   try {
     const result = await fetch(`${API.getQuestion}?${querySring.stringify(queryData)}`);
     const json = await result.json();
-
-    if (!json.response_code) {
-      dispatch({
-        type: actionTypes.GET_QUESTION_SUCCESS,
-        payload: json.results,
-      });
+    switch (json.response_code) {
+      case 0:
+        dispatch({
+          type: actionTypes.GET_QUESTION_SUCCESS,
+          payload: json.results,
+        });
+        break;
+      default:
+        dispatch({
+          type: actionTypes.GET_QUESTION_FAILURE,
+          payload: 'Something went wrong!',
+        });
+        break;
     }
-
-    //handle unhappy path with switch
   } catch (error) {
     dispatch({
       type: actionTypes.GET_QUESTION_FAILURE,
@@ -34,6 +39,7 @@ export const getCategories = () => async dispatch => {
   try {
     const result = await fetch(API.getCategories);
     const json = await result.json();
+
     dispatch({
       type: actionTypes.GET_CATEGORIES_SUCCESS,
       payload: json.trivia_categories,

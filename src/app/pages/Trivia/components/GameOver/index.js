@@ -1,7 +1,7 @@
 import React from 'react';
 import game from '../../../../../game';
 import { connect } from 'react-redux';
-import { compose, bindActionCreators } from 'redux';
+import { bindActionCreators } from 'redux';
 import { Button } from '../../../../components';
 import gameOver from '../../../../static/gifs/gameOver.gif';
 import './index.scss';
@@ -20,17 +20,15 @@ function GameOver({ questionsAnswered, playAgain }) {
   );
 }
 
-const enhance = compose(
-  connect(
-    null,
-    dispatch =>
-      bindActionCreators(
-        {
-          playAgain: game.actions.playAgain,
-        },
-        dispatch,
-      ),
-  ),
+const enhance = connect(
+  null,
+  dispatch =>
+    bindActionCreators(
+      {
+        playAgain: game.actions.playAgain,
+      },
+      dispatch,
+    ),
 );
 
 export default enhance(GameOver);
