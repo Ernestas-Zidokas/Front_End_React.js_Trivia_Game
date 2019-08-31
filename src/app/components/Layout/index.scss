@@ -8,29 +8,10 @@
 }
 
 .Header {
-  padding: 0px 15px;
+  padding: 5px 15px;
   background: #a52a2a;
-
-  &--navigation {
-    max-width: 1020px;
-    margin: 0 auto;
-
-    &-item {
-      display: inline-block;
-      color: #fff;
-      font-size: 20px;
-      line-height: 20px;
-      padding: 10px 15px;
-      transition: all 0.3s;
-
-      &:hover,
-      &.active {
-        opacity: 0.6;
-        background: #fff;
-        color: #a52a2a;
-      }
-    }
-  }
+  text-align: center;
+  color: #fff;
 }
 
 .Footer {
