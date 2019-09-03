@@ -1,0 +1,296 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v4.0 | 20180602
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+main, menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, main, menu, nav, section {
+	display: block;
+}
+/* HTML5 hidden-attribute fix for newer browsers */
+*[hidden] {
+    display: none;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+body{margin:0;font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}body a{text-decoration:none}*{box-sizing:border-box}
+
+.Layout{position:relative;background:#080808;margin:0 auto;display:flex;flex-direction:column;min-height:100vh}.Header{padding:5px 15px;background:#a52a2a;text-align:center;color:#fff}.Footer{padding:20px 15px;font-size:20px;line-height:20px;text-align:center;color:#fff}
+
+.react-spinner-loader-swing div {
+  border-radius: 50%;
+  float: left;
+  height: 1em;
+  width: 1em;
+}
+.react-spinner-loader-swing div:nth-of-type(1) {
+  background: -webkit-linear-gradient(left, #385c78 0%, #325774 100%);
+  background: linear-gradient(to right, #385c78 0%, #325774 100%);
+}
+.react-spinner-loader-swing div:nth-of-type(2) {
+  background: -webkit-linear-gradient(left, #325774 0%, #47536a 100%);
+  background: linear-gradient(to right, #325774 0%, #47536a 100%);
+}
+.react-spinner-loader-swing div:nth-of-type(3) {
+  background: -webkit-linear-gradient(left, #4a5369 0%, #6b4d59 100%);
+  background: linear-gradient(to right, #4a5369 0%, #6b4d59 100%);
+}
+.react-spinner-loader-swing div:nth-of-type(4) {
+  background: -webkit-linear-gradient(left, #744c55 0%, #954646 100%);
+  background: linear-gradient(to right, #744c55 0%, #954646 100%);
+}
+.react-spinner-loader-swing div:nth-of-type(5) {
+  background: -webkit-linear-gradient(left, #9c4543 0%, #bb4034 100%);
+  background: linear-gradient(to right, #9c4543 0%, #bb4034 100%);
+}
+.react-spinner-loader-swing div:nth-of-type(6) {
+  background: -webkit-linear-gradient(left, #c33f31 0%, #d83b27 100%);
+  background: linear-gradient(to right, #c33f31 0%, #d83b27 100%);
+}
+.react-spinner-loader-swing div:nth-of-type(7) {
+  background: -webkit-linear-gradient(left, #da3b26 0%, #db412c 100%);
+  background: linear-gradient(to right, #da3b26 0%, #db412c 100%);
+}
+.react-spinner-loader-shadow {
+  clear: left;
+  padding-top: 1.5em;
+}
+.react-spinner-loader-shadow div {
+  -webkit-filter: blur(1px);
+  filter: blur(1px);
+  float: left;
+  width: 1em;
+  height: .25em;
+  border-radius: 50%;
+  background: #e3dbd2;
+}
+.react-spinner-loader-shadow .react-spinner-loader-shadow-l {
+  background: #d5d8d6;
+}
+.react-spinner-loader-shadow .react-spinner-loader-shadow-r {
+  background: #eed3ca;
+}
+@-webkit-keyframes ball-l {
+  0%, 50% {
+    -webkit-transform: rotate(0) translateX(0);
+    transform: rotate(0) translateX(0);
+  }
+  100% {
+    -webkit-transform: rotate(50deg) translateX(-2.5em);
+    transform: rotate(50deg) translateX(-2.5em);
+  }
+}
+@keyframes ball-l {
+  0%, 50% {
+    -webkit-transform: rotate(0) translate(0);
+    transform: rotate(0) translateX(0);
+  }
+  100% {
+    -webkit-transform: rotate(50deg) translateX(-2.5em);
+    transform: rotate(50deg) translateX(-2.5em);
+  }
+}
+@-webkit-keyframes ball-r {
+  0% {
+    -webkit-transform: rotate(-50deg) translateX(2.5em);
+    transform: rotate(-50deg) translateX(2.5em);
+  }
+  50%,
+  100% {
+    -webkit-transform: rotate(0) translateX(0);
+    transform: rotate(0) translateX(0);
+  }
+}
+@keyframes ball-r {
+  0% {
+    -webkit-transform: rotate(-50deg) translateX(2.5em);
+    transform: rotate(-50deg) translateX(2.5em);
+  }
+  50%,
+  100% {
+    -webkit-transform: rotate(0) translateX(0);
+    transform: rotate(0) translateX(0)
+  }
+}
+@-webkit-keyframes shadow-l-n {
+  0%, 50% {
+    opacity: .5;
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+  100% {
+    opacity: .125;
+    -webkit-transform: translateX(-1.57em);
+    transform: translateX(-1.75em);
+  }
+}
+@keyframes shadow-l-n {
+  0%, 50% {
+    opacity: .5;
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+  100% {
+    opacity: .125;
+    -webkit-transform: translateX(-1.75);
+    transform: translateX(-1.75em);
+  }
+}
+@-webkit-keyframes shadow-r-n {
+  0% {
+    opacity: .125;
+    -webkit-transform: translateX(1.75em);
+    transform: translateX(1.75em);
+  }
+  50%,
+  100% {
+    opacity: .5;
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+@keyframes shadow-r-n {
+  0% {
+    opacity: .125;
+    -webkit-transform: translateX(1.75em);
+    transform: translateX(1.75em);
+  }
+  50%,
+  100% {
+    opacity: .5;
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+.react-spinner-loader-swing-l {
+  -webkit-animation: ball-l .425s ease-in-out infinite alternate;
+  animation: ball-l .425s ease-in-out infinite alternate;
+}
+.react-spinner-loader-swing-r {
+  -webkit-animation: ball-r .425s ease-in-out infinite alternate;
+  animation: ball-r .425s ease-in-out infinite alternate;
+}
+.react-spinner-loader-shadow-l {
+  -webkit-animation: shadow-l-n .425s ease-in-out infinite alternate;
+  animation: shadow-l-n .425s ease-in-out infinite alternate;
+}
+.react-spinner-loader-shadow-r {
+  -webkit-animation: shadow-r-n .425s ease-in-out infinite alternate;
+  animation: shadow-r-n .425s ease-in-out infinite alternate;
+}
+
+
+.react-spinner-loader-svg svg {
+  -webkit-transform-origin: 50% 65%;
+          transform-origin: 50% 65%;
+}
+
+.react-spinner-loader-svg svg polygon {
+  stroke-dasharray: 17;
+  -webkit-animation: dash 2.5s cubic-bezier(0.35, 0.04, 0.63, 0.95) infinite;
+          animation: dash 2.5s cubic-bezier(0.35, 0.04, 0.63, 0.95) infinite;
+}
+
+@-webkit-keyframes dash {
+  to {
+    stroke-dashoffset: 136;
+  }
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 136;
+  }
+}
+@-webkit-keyframes rotate {
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@keyframes rotate {
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+
+.react-spinner-loader-svg-calLoader {
+  width: 230px;
+  height: 230px;
+  transform-origin: 115px 115px;
+  animation: 1.4s linear infinite loader-spin;
+}
+
+.react-spinner-loader-svg-cal-loader__path {
+
+  animation: 1.4s ease-in-out infinite loader-path;
+}
+
+@keyframes loader-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes loader-path {
+  0% {
+    stroke-dasharray: 0, 580, 0, 0, 0, 0, 0, 0, 0;
+  }
+  50% {
+    stroke-dasharray: 0, 450, 10, 30, 10, 30, 10, 30, 10;
+  }
+  100% {
+    stroke-dasharray: 0, 580, 0, 0, 0, 0, 0, 0, 0;
+  }
+}
+
+.Timer{padding:0px 15px;text-align:center}.Timer--time{color:#fff;font-size:30px;margin:20px}.Timer--time span{font-size:20px}.Timer--moves{margin:20px;display:inline-block;font-size:30px}
+
+.ReactModal__Overlay{width:1020px;max-height:350px;margin:0 auto;position:absolute;top:40px;left:40px;right:40px;bottom:40px;border:1px solid #ccc;background:#000;overflow:auto;border-radius:4px;text-align:center}.ReactModal__Content--Categories{margin:20px}.ReactModal__Content--Categories__title{display:flex;justify-content:center;align-items:center}.ReactModal__Content--Categories__title label,.ReactModal__Content--Categories__title img{margin:10px}.ReactModal__Content--Categories__title img{height:50px}.ReactModal__Content--Categories__title label{color:#fff;font-size:24px}.ReactModal__Content--Categories button{cursor:pointer;max-width:45%;width:100%;box-sizing:border-box;padding:20px;font-size:18px;margin:10px}.ReactModal__Content--Play p{color:#fff;font-size:24px;font-weight:700;margin:10px}.ReactModal__Content--Play button{cursor:pointer;margin:10px;padding:10px 20px;font-size:18px;font-weight:700}.ReactModal__Content--Play img{height:170px;display:block;margin:10px auto}.ReactModal__Content:focus{outline:none}
+
+.GameOver img{height:200px}.GameOver p{color:#fff;margin:10px;font-size:24px}.GameOver button{margin:10px;font-size:18px;font-weight:700;padding:10px 20px}
+
+.Life{text-align:right;margin:10px}
+
+.Trivia{position:relative;width:100%;height:100%;text-align:center;margin-top:40px;border:1px solid #fff}.Trivia--Container{padding:20px}.Trivia--Container img{position:absolute;height:120px;top:10px;left:10px}.Trivia--Container--number{color:#fff;margin:20px;font-size:18px}.Trivia--Container--question{color:#fff;margin:20px;font-size:24px}.Trivia--Container--answer{cursor:pointer;margin:20px;padding:10px 20px;font-size:18px;font-weight:700}
+
+
