@@ -24,3 +24,4 @@ export const SET_DIFFICULTY = `${MODULE_NAME}.SET_DIFFICULTY`;
 
 export const TIME_IS_OUT = `${MODULE_NAME}.TIME_IS_OUT`;
 export const PLAY_AGAIN = `${MODULE_NAME}.PLAY_AGAIN`;
+export const SET_TIME = `${MODULE_NAME}.SET_TIME`;

@@ -8,10 +8,12 @@ export default ({ getState, dispatch }) => next => action => {
 
     if (questionNr === 5) {
       dispatch(game.actions.setDifficulty('medium'));
+      dispatch(game.actions.setTime(20));
     }
 
     if (questionNr === 10) {
       dispatch(game.actions.setDifficulty('hard'));
+      dispatch(game.actions.setTime(15));
     }
   }
 };

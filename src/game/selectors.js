@@ -57,6 +57,10 @@ export const getQuestionsAnswered = state => {
   return state[MODULE_NAME].play.questionsAnswered;
 };
 
+export const getTime = state => {
+  return state[MODULE_NAME].play.time;
+};
+
 export const get4RandCategories = state => {
   const categories = state[MODULE_NAME].categories.data;
 

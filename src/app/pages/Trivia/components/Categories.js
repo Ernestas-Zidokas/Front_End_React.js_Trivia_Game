@@ -1,17 +1,17 @@
 import React, { useContext } from 'react';
 import { TimerContext, Button } from '../../../components/';
 import { connect } from 'react-redux';
-import { compose, bindActionCreators } from 'redux';
+import { bindActionCreators } from 'redux';
 import game from '../../../../game';
 
-function Categories({ categories, setCategory, setToggleModal }) {
+function Categories({ categories, setCategory, setToggleModal, time }) {
   const { setStartTime, setCurrentTime } = useContext(TimerContext);
 
   const handleChange = e => {
     setCategory(e.target.value);
     setToggleModal();
     setStartTime(Date.now());
-    setCurrentTime(30);
+    setCurrentTime(time);
   };
 
   return (
@@ -27,6 +27,7 @@ function Categories({ categories, setCategory, setToggleModal }) {
 const enhance = connect(
   state => ({
     categories: game.selectors.get4RandCategories(state),
+    time: game.selectors.getTime(state),
   }),
   dispatch =>
     bindActionCreators(

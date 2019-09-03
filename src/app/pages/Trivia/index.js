@@ -8,15 +8,16 @@ import './index.scss';
 
 function Trivia({ question, gameOver, questionNr, life, questionsAnswered, loading, toggleModal }) {
   const showQuestion = !gameOver && question.length > 0 && !toggleModal;
+  const containerHasClass = showQuestion || loading || gameOver;
 
   return (
-    <div className="Trivia">
-      <Life life={life} />
+    <div className={containerHasClass ? 'Trivia' : undefined}>
       {loading && <Loader />}
       <Modal />
       {gameOver && <GameOver questionsAnswered={questionsAnswered} />}
       {showQuestion && (
         <div className="Trivia--Container">
+          <Life life={life} />
           <img src={makeYourChoice} alt="A doll with a mask in a TV" />
           <p className="Trivia--Container--number">Question Nr. {questionNr}</p>
           <Timer />

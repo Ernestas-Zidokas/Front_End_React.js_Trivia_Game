@@ -92,6 +92,11 @@ export const setDifficulty = payload => ({
   payload,
 });
 
+export const setTime = payload => ({
+  type: actionTypes.SET_TIME,
+  payload,
+});
+
 export const toggleInGame = () => ({
   type: actionTypes.TOGGLE_IN_GAME,
 });

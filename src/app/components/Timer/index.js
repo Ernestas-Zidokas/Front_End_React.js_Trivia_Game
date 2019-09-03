@@ -7,12 +7,12 @@ import TimerContext from '../TimerContext';
 import { timeConverter, countTimePassed } from '../../../utils';
 import './index.scss';
 
-function Timer({ timeIsOut, gameOver, toggleModal }) {
+function Timer({ timeIsOut, gameOver, toggleModal, time }) {
   const { startTime, setStartTime, currentTime, setCurrentTime } = useContext(TimerContext);
 
   useInterval(
     () => {
-      setCurrentTime(30 - countTimePassed(Date.now(), startTime));
+      setCurrentTime(time - countTimePassed(Date.now(), startTime));
     },
     toggleModal || currentTime === 0 ? null : 1000,
   );
@@ -21,7 +21,7 @@ function Timer({ timeIsOut, gameOver, toggleModal }) {
     timeIsOut();
 
     setStartTime(Date.now());
-    setCurrentTime(30);
+    setCurrentTime(time);
   }
 
   const { min, sec } = timeConverter(currentTime);
@@ -42,6 +42,7 @@ const enhance = compose(
     state => ({
       gameOver: game.selectors.getIsGameOver(state),
       toggleModal: game.selectors.getToggleModal(state),
+      time: game.selectors.getTime(state),
     }),
     dispatch =>
       bindActionCreators(

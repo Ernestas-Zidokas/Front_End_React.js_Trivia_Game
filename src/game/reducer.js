@@ -14,6 +14,7 @@ const INITIAL_PLAY_STATE = {
   difficulty: 'easy',
   wrongAnswers: [],
   toggleInGame: false,
+  time: 30,
 };
 
 const INITIAL_CATEGORY_STATE = {
@@ -141,6 +142,15 @@ function reducer(state = INITIAL_STATE, { type, payload }) {
         categories: {
           ...state.categories,
           toggleModal: true,
+        },
+      };
+
+    case actionTypes.SET_TIME:
+      return {
+        ...state,
+        play: {
+          ...state.play,
+          time: payload,
         },
       };
 

@@ -2,6 +2,7 @@
   "name": "triviagame",
   "version": "0.0.0",
   "private": true,
+  "homepage": "https://ernestas-zidokas.github.io/Front_End_React.js_Trivia_Game/",
   "dependencies": {
     "html-entities": "^1.2.1",
     "query-string": "^6.8.2",
@@ -22,7 +23,8 @@
   "scripts": {
     "prebuild": "rm -rf build",
     "build": "webpack --config webpack.prod.config.js",
-    "dev": "webpack-dev-server --open --color --config webpack.dev.config.js"
+    "dev": "webpack-dev-server --open --color --config webpack.dev.config.js",
+    "deploy": "npm run build && gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -48,6 +50,7 @@
     "copy-webpack-plugin": "^5.0.4",
     "css-loader": "^3.2.0",
     "file-loader": "^4.2.0",
+    "gh-pages": "^2.1.1",
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.8.0",
     "node-sass": "^4.12.0",
